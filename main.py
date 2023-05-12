@@ -1,13 +1,9 @@
 # day 12 number guessing game
 
-from random import choice as select
-# as random.choice is being used to select a number for a list
-# it seems the code will be more readable if it is called select
+from random import randint
+secret_number = randint(1, 100)
+# use the randint function to generate a random integer between 1 and 100
 
-number = [num for num in range(1, 101)]
-# create a list of all the numbers from 1 to 100
-
-secret_number = select(number)
 # print(secret_number)
 
 game_over = False
@@ -41,11 +37,12 @@ def mode_selection():
     try:
         return mode[choice]
     except KeyError:
-        print (f'ERROR: "{choice}" is not valid input\nMode set to easy.\n')
+        print(f'ERROR: "{choice}" is not valid input\nMode set to easy.\n')
         return 10
 
 
 # # main section with gameplay # #
+
 print(title)
 chances = mode_selection()
 # call the function to return either 5 or 10
@@ -66,8 +63,9 @@ while not game_over:
         print(f'Bingo Bango!\n You guessed {user_guess} and the number is {secret_number}!')
         game_over = True
 
-print("""
+print(f"""
 ^^^^^^^^^^^^^^^^^^^
 Thanks for playing.
+the secret number was: {secret_number}
 ^^^^^^^^^^^^^^^^^^^
 """)
